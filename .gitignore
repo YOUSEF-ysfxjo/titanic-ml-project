@@ -1,0 +1,17 @@
+# Byte-compiled / Jupyter Notebook checkpoints
+__pycache__/
+.ipynb_checkpoints/
+
+# Environment
+.env
+*.env
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data files
+/data/*.csv
