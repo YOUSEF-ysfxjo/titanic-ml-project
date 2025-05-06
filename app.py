@@ -5,8 +5,9 @@ from flask_cors import CORS
 submission = pd.read_csv('notebooks/submission.csv')
 
 app = Flask(__name__)
-CORS(app, resources={r"/predict": {"origins": "https://titanic-ml-project-phi.vercel.app"}})
 
+# 👇 هذا هو التعديل المهم
+CORS(app, resources={r"/predict": {"origins": "*"}})
 
 @app.route('/predict', methods=['GET'])
 def predict():
@@ -14,7 +15,6 @@ def predict():
     if passenger_id is None:
         return jsonify({'error': 'No PassengerId provided'}), 400
 
-    # Look up the PassengerId in the submission file
     row = submission[submission['PassengerId'] == passenger_id]
     if row.empty:
         return jsonify({'error': 'PassengerId not found'}), 404
