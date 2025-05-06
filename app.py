@@ -5,7 +5,8 @@ from flask_cors import CORS
 submission = pd.read_csv('notebooks/submission.csv')
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/predict": {"origins": "https://titanic-ml-project-phi.vercel.app"}})
+
 
 @app.route('/predict', methods=['GET'])
 def predict():
