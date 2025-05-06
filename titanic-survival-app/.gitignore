@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -22,22 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-=======
-# Byte-compiled / Jupyter Notebook checkpoints
-__pycache__/
-.ipynb_checkpoints/
-
-# Environment
-.env
-*.env
-
-# VS Code settings
-.vscode/
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Data files
-/data/*.csv
->>>>>>> a00e76bbf957ac98317e540c5c1434aba38a736f
