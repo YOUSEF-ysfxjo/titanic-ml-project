@@ -13,7 +13,13 @@ function App() {
     setError('');
     setLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:5000/predict?passenger_id=${passengerId}`);
+      const response = await fetch(`https://titanic-ml-project-1-nsj4.onrender.com/predict?passenger_id=${passengerId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
       if (!response.ok) {
         const data = await response.json();
         setError(data.error || 'Something went wrong');
