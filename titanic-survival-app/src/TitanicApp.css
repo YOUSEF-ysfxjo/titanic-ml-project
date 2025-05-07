@@ -1,0 +1,193 @@
+/* Main Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #0f172a, #1e293b);
+    color: #f8fafc;
+    padding: 1.5rem;
+  }
+  
+  /* Header Section */
+  .header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  
+  .header h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header p {
+    font-size: 1.125rem;
+    color: #94a3b8;
+  }
+  
+  /* Workflow Steps */
+  .workflow-steps {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    max-width: 90rem;
+    overflow-x: auto;
+  }
+  
+  
+  .workflow-card {
+    background-color: #334155;
+    border: 1px solid #475569;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 16rem;
+  }
+  
+  .workflow-card h3 {
+    color: #f1f5f9; /* لون فاتح وواضح */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  
+  .workflow-card ul {
+    color: #cbd5e1; /* رمادي فاتح جميل */
+    font-size: 0.875rem;
+    text-align: center;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  
+  
+  .workflow-card li {
+    margin: 0.4rem 0;
+    list-style: none;
+    position: relative;
+  }
+  
+
+  
+  /* Arrow */
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+  }
+  
+  .arrow-line {
+    width: 1.5rem;
+    height: 0.125rem;
+    background-color: #94a3b8;
+    position: relative;
+  }
+  
+  .arrow-head {
+    position: absolute;
+    right: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-top: 1px solid #94a3b8;
+    border-right: 1px solid #94a3b8;
+    transform: rotate(45deg);
+    margin-top: -0.25rem;
+  }
+  
+  /* Demo Preview Section */
+  .demo-preview {
+    background: linear-gradient(to bottom right, #475569, #334155);
+    border: 1px solid #475569;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 28rem;
+  }
+  
+  .demo-preview h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .input-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .passenger-input {
+    background-color: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    color: #f8fafc;
+  }
+  
+  .predict-button {
+    background-color: #0ea5e9;
+    border: 1px solid #0284c7;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .predict-button:hover {
+    background-color: #0284c7;
+  }
+  
+  .predict-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .loading-text {
+    text-align: center;
+  }
+  
+  .error-text {
+    color: #ef4444;
+    text-align: center;
+  }
+  
+  /* Result Section */
+  .result-container {
+    margin-top: 1rem;
+  }
+  
+  .result-container h3 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .result-row {
+    display: flex;
+  }
+  
+  .result-label {
+    color: #94a3b8;
+    margin-right: 0.5rem;
+  }
+  
+  .not-survived {
+    color: #ef4444;
+  }
+  
+  .result-text {
+    color: #ef4444;
+    text-align: center;
+    margin-top: 0.5rem;
+  }

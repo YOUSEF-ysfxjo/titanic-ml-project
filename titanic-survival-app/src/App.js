@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './TitanicApp.css'; // استخدم نفس ملف الستايل الجميل
 
 function App() {
   const [passengerId, setPassengerId] = useState('');
@@ -13,18 +13,13 @@ function App() {
     setError('');
     setLoading(true);
     try {
-      const response = await fetch(`https://titanic-ml-project-1-nsj4.onrender.com/predict?passenger_id=${passengerId}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await fetch(`http://localhost:5000/predict?passenger_id=${passengerId}`);
+
       
+      const data = await response.json();
       if (!response.ok) {
-        const data = await response.json();
         setError(data.error || 'Something went wrong');
       } else {
-        const data = await response.json();
         setResult(data);
       }
     } catch (err) {
@@ -35,28 +30,117 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Titanic Survival Predictor</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="number"
-          placeholder="Enter PassengerId"
-          value={passengerId}
-          onChange={e => setPassengerId(e.target.value)}
-          required
-        />
-        <button type="submit" disabled={loading}>Predict</button>
-      </form>
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {result && (
-        <div style={{ marginTop: '20px' }}>
-          <h2>Prediction Result</h2>
-          <p><strong>PassengerId:</strong> {result.PassengerId}</p>
-          <p><strong>Survived:</strong> {result.Survived === 1 ? 'Yes' : 'No'}</p>
-          <p><strong>Result:</strong> {result.Result}</p>
+    <div className="app-container">
+      {/* Header */}
+      <div className="header">
+        <h1>Titanic Survival Predictor</h1>
+        <p>ML model predicts survival based on real Titanic data</p>
+      </div>
+  
+      {/* Workflow Steps */}
+      <div className="workflow-steps">
+        {/* Data Processing */}
+        <div className="workflow-card">
+          <h3>Data Processing</h3>
+          <ul>
+            <li>• Clean missing values</li>
+            <li>• Encode categories</li>
+            <li>• Feature selection</li>
+            <li>• Data normalization</li>
+          </ul>
         </div>
-      )}
+  
+        <div className="arrow">
+          <div className="arrow-line">
+            <div className="arrow-head"></div>
+          </div>
+        </div>
+  
+        {/* Model Training */}
+        <div className="workflow-card">
+          <h3>Model Training</h3>
+          <ul>
+            <li>• scikit-learn models</li>
+            <li>• Cross-validation</li>
+            <li>• Hyperparameter tuning</li>
+            <li>• Accuracy: 84.36%</li>
+          </ul>
+        </div>
+  
+        <div className="arrow">
+          <div className="arrow-line">
+            <div className="arrow-head"></div>
+          </div>
+        </div>
+  
+        {/* Backend */}
+        <div className="workflow-card">
+          <h3>Backend (API)</h3>
+          <ul>
+            <li>• Flask API</li>
+            <li>• REST endpoints</li>
+            <li>• Model serving</li>
+            <li>• Deployed on Render</li>
+          </ul>
+        </div>
+  
+        <div className="arrow">
+          <div className="arrow-line">
+            <div className="arrow-head"></div>
+          </div>
+        </div>
+  
+        {/* Frontend */}
+        <div className="workflow-card">
+          <h3>Frontend</h3>
+          <ul>
+            <li>• React.js UI</li>
+            <li>• User interface</li>
+            <li>• API integration</li>
+            <li>• Deployed on Vercel</li>
+          </ul>
+        </div>
+      </div>
+  
+      {/* Demo Section */}
+      <div className="demo-preview">
+        <h2>Titanic Survival Predictor</h2>
+        <form className="input-container" onSubmit={handleSubmit}>
+          <input
+            type="number"
+            placeholder="Enter PassengerId"
+            value={passengerId}
+            onChange={e => setPassengerId(e.target.value)}
+            className="passenger-input"
+            required
+          />
+          <button type="submit" disabled={loading} className="predict-button">
+            Predict
+          </button>
+        </form>
+  
+        {loading && <p className="loading-text">Loading...</p>}
+        {error && <p className="error-text">{error}</p>}
+  
+        {result && (
+          <div className="result-container">
+            <h3>Prediction Result</h3>
+            <div className="result-row">
+              <p className="result-label">PassengerId:</p>
+              <p>{result.PassengerId}</p>
+            </div>
+            <div className="result-row">
+              <p className="result-label">Survived:</p>
+              <p className={result.Survived === 1 ? 'survived' : 'not-survived'}>
+                {result.Survived === 1 ? 'Yes' : 'No'}
+              </p>
+            </div>
+            <p className={result.Survived === 1 ? 'result-text survived' : 'result-text not-survived'}>
+              Result: {result.Result}
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
