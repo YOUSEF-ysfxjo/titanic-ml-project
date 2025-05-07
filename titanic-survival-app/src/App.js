@@ -13,7 +13,7 @@ function App() {
     setError('');
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/predict?passenger_id=${passengerId}`);
+      fetch(`https://titanic-ml-project-1-nsj4.onrender.com/predict?passenger_id=${passengerId}`)
 
       
       const data = await response.json();
@@ -142,6 +142,8 @@ function App() {
         )}
       </div>
     </div>
+
+    
   );
 }
 
