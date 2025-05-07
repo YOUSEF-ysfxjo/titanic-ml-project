@@ -12,11 +12,11 @@ function App() {
     setResult(null);
     setError('');
     setLoading(true);
+  
     try {
-      fetch(`https://titanic-ml-project-1-nsj4.onrender.com/predict?passenger_id=${passengerId}`)
-
-      
+      const response = await fetch(`https://titanic-ml-project-1-nsj4.onrender.com/predict?passenger_id=${passengerId}`);
       const data = await response.json();
+  
       if (!response.ok) {
         setError(data.error || 'Something went wrong');
       } else {
@@ -28,6 +28,7 @@ function App() {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="app-container">
